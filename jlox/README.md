@@ -30,3 +30,10 @@ Lexer:
 
 Tasks after initial read:
     - Add support for C-style /* ... */ block comments. Handle newlines. Allow nesting
+
+Representing code:
+    - post-order traversal of trees is desirable because we need the numerical values of the sub-trees
+    - You can think of the AST as what allows the parser and interpreter to communicate
+    - Visitor design pattern: Not about "visting" or traversing. It's about using polymorphic dispatch on the subclasses
+    to select the appropriate method on the visitor class. Each subclass of the main class is a "row" that has an accept()
+    that routes to the correct visit method.

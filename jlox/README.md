@@ -32,6 +32,7 @@ Tasks after initial read:
     - Add support for C-style /* ... */ block comments. Handle newlines. Allow nesting
     - Add support for comma expressions (like C)
     - Add support for ternary operator
+    - detect and report a runtime error when visitBinaryExpr() finds a division by zero
 
 Representing code:
     - post-order traversal of trees is desirable because we need the numerical values of the sub-trees

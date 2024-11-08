@@ -1,3 +1,5 @@
 **/.idea/
 *.iml
 jlox/out
+clox/cmake-build-debug
+clox/CMakeLists.txt

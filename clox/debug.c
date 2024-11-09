@@ -27,7 +27,7 @@ static int constant_instruction(const char* name, Chunk* chunk, int offset) {
 int disassemble_instruction(Chunk* chunk, int offset) {
     printf("%04d ", offset);
     if (offset > 0 && chunk->lines[offset] == chunk->lines[offset - 1]) {
-        printf("    |  ");
+        printf("   |  ");
     } else {
         printf("%4d ", chunk->lines[offset]);
     }
@@ -38,6 +38,16 @@ int disassemble_instruction(Chunk* chunk, int offset) {
             return simple_instruction("OP_RETURN", offset);
         case OP_CONSTANT:
             return constant_instruction("OP_CONSTANT", chunk, offset);
+        case OP_ADD:
+            return simple_instruction("OP_ADD", offset);
+        case OP_SUBTRACT:
+            return simple_instruction("OP_SUBTRACT", offset);
+        case OP_MULTIPLY:
+            return simple_instruction("OP_MULTIPLY", offset);
+        case OP_DIVIDE:
+            return simple_instruction("OP_DIVIDE", offset);
+        case OP_NEGATE:
+            return simple_instruction("OP_NEGATE", offset);
         default:
             printf("Unknown opcode %d\n", instruction);
         return offset + 1;

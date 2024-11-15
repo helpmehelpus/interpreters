@@ -1,9 +1,11 @@
 #include <stdio.h>
 
 #include "common.h"
+#include "compiler.h"
 #include "debug.h"
 #include "vm.h"
 
+// We would pass this around to functions in a production setting
 VM vm;
 
 static void reset_stack() {
@@ -28,10 +30,9 @@ Value pop() {
     return *vm.stack_top;
 }
 
-InterpretResult interpret(Chunk* chunk) {
-    vm.chunk = chunk;
-    vm.ip = vm.chunk->code;
-    return run();
+InterpretResult interpret(const char* source) {
+    compile(source);
+    return INTERPRET_OK;
 }
 
 static InterpretResult run() {
